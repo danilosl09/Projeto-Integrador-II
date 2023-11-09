@@ -1,0 +1,17 @@
+<%- include("../layouts/header", {title: 'Início' }) %>
+
+    <%- include("../layouts/menu") %>
+
+    <div class="main">
+        <div class="charts">
+            <div class="chart">
+                <h2>Earnings (past 12 months)</h2>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="/javascripts/chart1.js"></script>
+
+<%- include("../layouts/footer") %>

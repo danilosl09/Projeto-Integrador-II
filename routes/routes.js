@@ -21,7 +21,7 @@ routes.get('/dados', DadosController.getAll);
 //routes.get('/dados/:id', DadosController.getById);
 
 //Controle Equipamentos
-routes.get('/equipamentos', EquipamentoController.getAll);
+//routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.get('/equipamentos/:id', EquipamentoController.getById);
 //routes.post('/equipamentos', EquipamentoController.create);
 //routes.put('/equipamentos/:id', EquipamentoController.update);
@@ -35,11 +35,11 @@ routes.get('/motores', MotoresController.getAll);
 //routes.delete('/motores/:id', MotoresController.delete);
 
 //Controle Sensores
-routes.get('/sensores', SensoresController.getAll);
+//routes.get('/sensores', SensoresController.getAll);
 //routes.get('/sensores/:id', SensoresController.getById);
 
 //Controle Setor
-routes.get('/setor', SetorController.getAll);
+//routes.get('/setor', SetorController.getAll);
 //routes.get('/setor/:id', SetorController.getById);
 //routes.post('/setor', SetorController.create);
 //routes.put('/setor/:id', SetorController.update);
