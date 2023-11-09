@@ -9,7 +9,7 @@ const db = require("../config/dbconnection")
 
 //Setor tem muitos Equipamentos
 Setor.hasMany(Equipamento,{onDelete: "CASCADE"})
-//Equipamento pertwnce a um setor
+//Equipamento pertence a um setor
 Equipamento.belongsTo(Setor, {foreingKey: "id_setor"})
 
 //Equipamento tem muitos Sensores
@@ -25,7 +25,7 @@ Sensores.belongsTo(Tipo_Sensor, {foreingKey: "id_tipo_sensor"})
 //Sensores tem muitos Dados
 Sensores.hasMany(Dados,{onDelete: "CASCADE"})
 //Dados pertence a um Sensores
-Dados.belongsTo(Dados, {foreingKey:"id_sensores"})
+Dados.belongsTo(Sensores, {foreingKey:"id_sensores"})
 
 //Tipo_de_Dado tem muitos Dados
 Tipo_de_Dado.hasMany(Dados, {onDelete: "CASCADE"})

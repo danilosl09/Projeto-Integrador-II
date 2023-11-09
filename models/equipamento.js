@@ -5,8 +5,9 @@ const Equipamento = db.define('equipamento', {
 
     id_equipamento: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
         autoIncrement: true,
-        primaryKey: true
+        allowNull: false
     },
     
     tag_equipamento: {

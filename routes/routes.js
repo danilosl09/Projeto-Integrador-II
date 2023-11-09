@@ -21,7 +21,7 @@ routes.get('/dados', DadosController.getAll);
 //routes.get('/dados/:id', DadosController.getById);
 
 //Controle Equipamentos
-//routes.get('/equipamentos', EquipamentoController.getAll);
+routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.get('/equipamentos/:id', EquipamentoController.getById);
 //routes.post('/equipamentos', EquipamentoController.create);
 //routes.put('/equipamentos/:id', EquipamentoController.update);

@@ -5,7 +5,7 @@ const ctx = document.getElementById('lineChart');
     data: {
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
-        label: '# of Votes',
+        label: 'Corrente (A)',
         data: [12, 19, 3, 5, 2, 3],
         backgroundColor: 'rgba(85, 85, 85, 1)',
         bordercolor: 'rgb(41, 155, 99)',

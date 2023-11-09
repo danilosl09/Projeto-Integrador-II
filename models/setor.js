@@ -9,7 +9,7 @@ const Setor = db.define('setor', {
         primaryKey: true,
         allowNull: false
     },
-   nome_setor: {
+    nome_setor: {
         type: DataTypes.STRING,
         allowNull: false
     },

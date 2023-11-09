@@ -1,0 +1,36 @@
+<%- include("../layouts/header", {title: 'EQUIPAMENTOS' }) %>
+
+    <%- include("../layouts/menu") %>
+
+      <div class="main">
+        <div class="coluna">
+          <div class="coluna_conteudo">
+            <h1>Motores</h1>
+          </div>
+          <div class="coluna_conteudo">
+              <a href="/">Voltar</a>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tag Equipamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% equipamento.forEach(equipamento=> { %>
+              <tr>
+                <td>
+                  <%= equipamento.id_equipamento %>
+                </td>
+                <td>
+                  <%= equipamento.tag_equipamento %>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+<%- include("../layouts/footer") %>
