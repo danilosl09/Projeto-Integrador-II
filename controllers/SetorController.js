@@ -17,8 +17,7 @@ controller.getAll = async (req, res) => {
 
 controller.create = async (req, res) =>{
 
-    const {nome_setor} = req.params
-    const {ome_setor, linha_setor} = req.body
+    const {nome_setor, linha_setor} = req.body.params
 
     try{
         const setor = await Setor.findByPk(nome_setor)

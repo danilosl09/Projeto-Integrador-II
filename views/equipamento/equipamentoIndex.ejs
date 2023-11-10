@@ -1,26 +1,34 @@
 <%- include("../layouts/header", {title: 'EQUIPAMENTOS' }) %>
 
-    <%- include("../layouts/menu") %>
+  <%- include("../layouts/menu") %>
 
-      <div class="main">
-        <div class="coluna">
-          <div class="coluna_conteudo">
-            <h1>Motores</h1>
-          </div>
-          <div class="coluna_conteudo">
-              <a href="/">Voltar</a>
-          </div>
+    <div class="container_1">
+      <h1>Equipamentos</h1>
+      <div class="coluna_1">
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
         </div>
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
+        </div>
+      </div>
+      <div class="container_tabela">
         <table>
           <thead>
-            <tr>
+            <tr class="item">
               <th>ID</th>
               <th>Tag Equipamento</th>
             </tr>
           </thead>
           <tbody>
             <% equipamento.forEach(equipamento=> { %>
-              <tr>
+              <tr class="item">
                 <td>
                   <%= equipamento.id_equipamento %>
                 </td>
@@ -28,9 +36,9 @@
                   <%= equipamento.tag_equipamento %>
                 </td>
               </tr>
-            <% }) %>
+              <% }) %>
           </tbody>
         </table>
       </div>
+    </div>
 
-<%- include("../layouts/footer") %>

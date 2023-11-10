@@ -4,11 +4,11 @@ const controller = {}
 
 controller.getAll = async (req, res) => {
     try {
-        // const dados = await Dados.findAll({
+        const dados = await Dados.findAll({
 
-        // })
+        })
         
-        res.status(200).render("dados/indexDados")
+        res.status(200).render("dados/indexDados", {dados:dados})
     } catch (error) {
         res.status(500).render("pages/error",{error: "Erro ao carregar a página!"})
     }

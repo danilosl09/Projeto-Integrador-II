@@ -39,7 +39,7 @@ routes.get('/motores', MotoresController.getAll);
 //routes.get('/sensores/:id', SensoresController.getById);
 
 //Controle Setor
-//routes.get('/setor', SetorController.getAll);
+routes.get('/setor', SetorController.getAll);
 //routes.get('/setor/:id', SetorController.getById);
 //routes.post('/setor', SetorController.create);
 //routes.put('/setor/:id', SetorController.update);

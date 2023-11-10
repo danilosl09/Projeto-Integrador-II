@@ -1,44 +1,54 @@
 <%- include("../layouts/header", {title: 'Início' }) %>
 
-    <%- include("../layouts/menu") %>
+  <%- include("../layouts/menu") %>
 
-    <div class="main">
-        <div class="coluna">
-          <div class="coluna_conteudo">
-            <h1>Motores</h1>
-          </div>
-          <div class="coluna_conteudo">
-              <a href="/">Voltar</a>
-          </div>
+    <div class="container_1">
+      <h1>Lista de Motores</h1>
+      <div class="coluna_1">
+
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Fabricante</th>
-              <th>Modelo</th>
-              <th>Potencia</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% motores.forEach(motor=> { %>
-              <tr>
-                <td>
-                  <%= motor.id_motores %>
-                </td>
-                <td>
-                  <%= motor.fabricante_motor %>
-                </td>
-                <td>
-                  <%= motor.modelo_motor %>
-                </td>
-                <td>
-                  <%= motor.potencia_motor %>
-                </td>
-              </tr>
-              <% }) %>
-          </tbody>
-        </table>
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/">Voltar</a>
+        </div>
       </div>
+      <div class="container_tabela">
+      <table>
+        <thead>
+          <tr class="item">
+            <th>ID</th>
+            <th>Fabricante</th>
+            <th>Modelo</th>
+            <th>Potencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% motores.forEach(motor=> { %>
+            <tr class="item">
+              <td>
+                <%= motor.id_motores %>
+              </td>
+              <td>
+                <%= motor.fabricante_motor %>
+              </td>
+              <td>
+                <%= motor.modelo_motor %>
+              </td>
+              <td>
+                <%= motor.potencia_motor %>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+    </div>
 
-<%- include("../layouts/footer") %>
+    <%- include("../layouts/footer") %>
