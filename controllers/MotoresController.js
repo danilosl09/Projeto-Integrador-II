@@ -3,6 +3,8 @@ const Motores = require("../models/motores");
 
 const controller = {}
 
+///////////////////////////////////////////////////////////////////////////////////
+
 controller.create = async (req, res) =>{
 
     const {id_motor} = req.params
@@ -23,6 +25,22 @@ controller.create = async (req, res) =>{
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////////
+
+controller.getRegisterPage = async (req, res) => {
+    try {
+        const motor = await Motores.findAll()
+        res.status(200).render("motores/form",{
+            cores : cores,
+            produto : new Motores(),
+            method : "POST"
+        })
+    } catch (error) {
+        res.status(500).render("pages/error",{error: "Erro ao carregar o formulário!"})
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
 controller.getAll = async (req, res) => {
     try {
         const motores = await Motores.findAll({

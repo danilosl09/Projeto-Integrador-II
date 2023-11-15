@@ -18,6 +18,7 @@ routes.get('/', (req, res) => {
 
 //Requisição de dados
 routes.get('/dados', DadosController.getAll);
+
 //routes.get('/dados/:id', DadosController.getById);
 
 //Controle Equipamentos

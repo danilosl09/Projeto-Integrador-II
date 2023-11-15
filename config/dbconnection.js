@@ -5,7 +5,7 @@ const connection = new sequelize("getdatamachine", "root", "@Stiling123",{
     dialect: "mysql",
     define:{
         timestamps: false,
-        freezeTableName: true
+        freezeTableName: true 
     }
 });
 

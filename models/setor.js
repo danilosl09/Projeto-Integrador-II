@@ -22,7 +22,7 @@ const Setor = db.define('setor', {
 
 (async () => {
     try {
-        await Setor.sync({force: true});
+        await Setor.sync({force: false});
         console.log("Tabela de Dados criada comsucesso!");
     }catch (error) {
         console.error("Não foi possível conectar-se ao banco de dados: ", error)

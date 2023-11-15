@@ -1,12 +1,17 @@
 const ctx = document.getElementById('lineChart');
 
+const eixoX = ['A', 'B', 'C', 'D', 'F'];
+
+const eixoY = [1,2,3,4,5];
+
+
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: eixoX,
       datasets: [{
         label: 'Corrente (A)',
-        data: [12, 19, 3, 5, 2, 3],
+        data: eixoY,
         backgroundColor: 'rgba(85, 85, 85, 1)',
         bordercolor: 'rgb(41, 155, 99)',
         borderWidth: 2
@@ -21,3 +26,5 @@ const ctx = document.getElementById('lineChart');
       }
     }
   });
+
+

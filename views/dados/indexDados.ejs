@@ -1,17 +1,35 @@
 <%- include("../layouts/header", {title: 'Dados' }) %>
 
     <%- include("../layouts/menu") %>
+    
+    <!--  fonte para criar o gráfico -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- link para mostrar os icones na barra de menu -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
 
     <div class="main">
         <div class="charts">
             <div class="chart">
                 <h2>Corrente do motor</h2>
-                <canvas id="lineChart"></canvas>
+                <!-- <canvas id="lineChart"></canvas> -->
+                <% dados.forEach(dado=> { %>
+                
+                    <h1><%= dado.valorDado %></h1>
+                
+                <% }) %>
+                <canvas id="barChart"></canvas>
+
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="/javascripts/chart1.js"></script>
 
-<%- include("../layouts/footer") %>
+    <!-- arquivo JS que monta o gráfico -->
+    <!-- <script src="/javascripts/chart1.js"></script> -->
+       <script src="/javascripts/chart2.js"></script>
+  
+
+
+    <%- include("../layouts/footer") %>
