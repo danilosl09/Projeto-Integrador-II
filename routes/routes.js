@@ -22,8 +22,7 @@ routes.get('/', (req, res) => {
 //Requisição de dados
 routes.get('/dados', DadosController.getAll);
 
-//routes.get('/dados/:id', DadosController.getById);
-
+routes.post('/filtraDados/:dataInicial/:horaInicial/:dataFinal/:horaFinal', DadosController.getById);
 //Controle Equipamentos
 routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.get('/equipamentos/:id', EquipamentoController.getById);

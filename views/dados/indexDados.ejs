@@ -3,6 +3,21 @@
     <%- include("../layouts/menu") %>
         <div class="chart">
             <h1>Dados</h1>
+            <form action="/filtraDados/:dataInicial/:horaInicial/:dataFinal/:horaFinal" method="post">
+                <label for="dataInicial">Data Inicial</label>
+                <input type="date" name="dataInicial" id="dataInicial">
+
+                <label for="horaInicial">Hora Inicial</label>
+                <input type="time" name="horaInicial" id="horaInicial">
+
+                <label for="dataFinal">Data Final</label>
+                <input type="date" name="dataFinal" id="dataFinal">
+
+                <label for="horaFinal">Hora Final</label>
+                <input type="time" name="horaFinal" id="horaFinal">
+
+                <input type="submit" value="Buscar">
+            </form>
             <canvas id="lineChart"></canvas>
         </div>
 
@@ -18,16 +33,8 @@
                 const myChart = new Chart(ctx, {
                     type: 'line',
                     data: chartData,
+
                 });
-                Options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
             });
         </script>
 
