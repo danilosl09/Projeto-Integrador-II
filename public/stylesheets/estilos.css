@@ -259,21 +259,30 @@
 }
 
 /* chart starts here */
-.charts{
+/* .charts{
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;
     width: 100%;
     padding: 20px;
     padding-top: 0;
+} */
+
+.chart{   
+    position: absolute;
+    top: 60px;
+    left: 260px;
+    width: calc(100% - 260px);
+    min-height: calc(100vh - 80px);
+    background: #f5f5f5;
 }
 
-.chart{
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
-    width: 100%;
+.chart h1{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    color: #666;
+    text-align: center;
 }
 
 .chart h2{

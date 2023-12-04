@@ -20,6 +20,8 @@ server.use(routes)
 //avisando o express sobre um repositório estático no projeto
 server.use(express.static(path.join(__dirname,"public")))
 
+server.set("public", path.join(__dirname,"public"))
+
 //avisando o express do local das views
 server.set("views", path.join(__dirname,"views"))
 //setando a engine utilizada para visualização: EJS
