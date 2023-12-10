@@ -13,7 +13,7 @@ controller.getAll = async (req, res) => {
         const eixoY = [];
 
         for (let i = 0; i < dados.length; i++) {
-            eixoX.push(dados[i].id_dados);
+            eixoX.push(dados[i].date_time);
             eixoY.push(dados[i].valorDado);
         };
 

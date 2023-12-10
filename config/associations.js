@@ -8,27 +8,27 @@ const Tipo_Sensor = require("../models/tipo_sensor");
 const db = require("../config/dbconnection")
 
 //Setor tem muitos Equipamentos
-Setor.hasMany(Equipamento,{foreignKey: "id_setor", onDelete: "CASCADE"})
+Setor.hasMany(Equipamento,{onDelete: "CASCADE"})
 //Equipamento pertence a um setor
 Equipamento.belongsTo(Setor, {foreignKey: "id_setor"})
 
 //Equipamento tem muitos Sensores
-Equipamento.hasMany(Sensores,{foreignKey: "id_equipamento", onDelete: "CASCADE"})
+Equipamento.hasMany(Sensores,{onDelete: "CASCADE"})
 //Sensores pertence a um Equipamento
 Sensores.belongsTo(Equipamento, {foreignKey: "id_equipamento"})
 
 //Tipo_Sensor tem muitos Sensores 
-Tipo_Sensor.hasMany(Sensores,{foreignKey: "id_tipo_sensor", onDelete: "CASCADE"})
+Tipo_Sensor.hasMany(Sensores,{onDelete: "CASCADE"})
 //Sensores pertence a um Tipo_Sensor
 Sensores.belongsTo(Tipo_Sensor, {foreignKey: "id_tipo_sensor"})
 
 //Sensores tem muitos Dados
-Sensores.hasMany(Dados,{foreignKey: "id_sensores", onDelete: "CASCADE"})
+Sensores.hasMany(Dados,{onDelete: "CASCADE"})
 //Dados pertence a um Sensores
 Dados.belongsTo(Sensores, {foreignKey:"id_sensores"})
 
 //Tipo_de_Dado tem muitos Dados
-Tipo_de_Dado.hasMany(Dados, {foreignKey: "id_tipo_de_dado", onDelete: "CASCADE"})
+Tipo_de_Dado.hasMany(Dados, {onDelete: "CASCADE"})
 //Dados pertence a um tipo de Dado
 Dados.belongsTo(Tipo_de_Dado, {foreignKey: "id_tipo_de_dado"})
 
@@ -36,6 +36,42 @@ Dados.belongsTo(Tipo_de_Dado, {foreignKey: "id_tipo_de_dado"})
 Equipamento.belongsToMany(Motores, {through: "Equipamento_has_Motores", onDelete: "CASCADE"})
 //Motores tem muitos Equipamentos entre Equipamento_has_Motores
 Motores.belongsToMany(Equipamento, {through: "Equipamento_has_Motores", onDelete: "CASCADE"})
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// //Setor tem muitos Equipamentos
+// Setor.hasMany(Equipamento,{foreignKey: "id_setor", onDelete: "CASCADE"})
+// //Equipamento pertence a um setor
+// Equipamento.belongsTo(Setor, {foreignKey: "id_setor"})
+
+// //Equipamento tem muitos Sensores
+// Equipamento.hasMany(Sensores,{foreignKey: "id_equipamento", onDelete: "CASCADE"})
+// //Sensores pertence a um Equipamento
+// Sensores.belongsTo(Equipamento, {foreignKey: "id_equipamento"})
+
+// //Tipo_Sensor tem muitos Sensores 
+// Tipo_Sensor.hasMany(Sensores,{foreignKey: "id_tipo_sensor", onDelete: "CASCADE"})
+// //Sensores pertence a um Tipo_Sensor
+// Sensores.belongsTo(Tipo_Sensor, {foreignKey: "id_tipo_sensor"})
+
+// //Sensores tem muitos Dados
+// Sensores.hasMany(Dados,{foreignKey: "id_sensores", onDelete: "CASCADE"})
+// //Dados pertence a um Sensores
+// Dados.belongsTo(Sensores, {foreignKey:"id_sensores"})
+
+// //Tipo_de_Dado tem muitos Dados
+// Tipo_de_Dado.hasMany(Dados, {foreignKey: "id_tipo_de_dado", onDelete: "CASCADE"})
+// //Dados pertence a um tipo de Dado
+// Dados.belongsTo(Tipo_de_Dado, {foreignKey: "id_tipo_de_dado"})
+
+// //Equipamento tem muitos Motores entre Equipamento_has_Motores
+// Equipamento.belongsToMany(Motores, {through: "Equipamento_has_Motores", onDelete: "CASCADE"})
+// //Motores tem muitos Equipamentos entre Equipamento_has_Motores
+// Motores.belongsToMany(Equipamento, {through: "Equipamento_has_Motores", onDelete: "CASCADE"})
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 db.sync({force: false})

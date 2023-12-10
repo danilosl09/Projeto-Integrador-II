@@ -1,6 +1,6 @@
 const sequelize = require("sequelize");
 
-const connection = new sequelize("getdatamachine", "root", "@Stiling123",{
+const connection = new sequelize("getdatamachine", "root", "123456",{
     host: "localhost",
     dialect: "mysql",
     define:{

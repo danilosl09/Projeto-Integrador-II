@@ -8,10 +8,12 @@ const Dados = db.define('dados', {
         autoIncrement: true,
         primaryKey: true
     },
+    
     date_time: {
         type: DataTypes.DATE,
-        default: DataTypes.NOW,
-        allowNull: false
+        allowNull: false,
+        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
+        
     },
     valorDado: {
         type: DataTypes.FLOAT,

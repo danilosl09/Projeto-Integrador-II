@@ -5,8 +5,8 @@ const MotoresController = require('../controllers/MotoresController');
 const SensoresController = require('../controllers/SensoresController');    
 const SetorController = require('../controllers/SetorController');
 
-const Chart = require("chart.js");
-const EJS = require("ejs");
+// const Chart = require("chart.js");
+// const EJS = require("ejs");
 
 const routes = express.Router();
 
