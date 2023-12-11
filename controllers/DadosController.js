@@ -1,9 +1,12 @@
-const e = require("connect-flash");
+
 const Dados = require("../models/dados");
-const express = require("express")
+const Sensores = require("../models/sensores");
+const TipoDado = require("../models/tipo_de_dado");
 const sequelize = require("sequelize");
 const controller = {}
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// --> seleciona todo os dados da tabela dados
 controller.getAll = async (req, res) => {
 
     try {
@@ -37,7 +40,10 @@ controller.getAll = async (req, res) => {
         console.log(error)
     }
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// --> seleciona os dados da tabela dados definidos pela dara e hora inicial e final
 controller.getById = async (req, res) => {
 
     const { dataInicial, horaInicial, dataFinal, horaFinal } = req.body;
@@ -85,5 +91,6 @@ controller.getById = async (req, res) => {
         console.log(error)
     }
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = controller

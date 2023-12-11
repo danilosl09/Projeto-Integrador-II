@@ -6,9 +6,10 @@ const Dados = db.define('dados', {
     id_dados: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        allowNull: false
     },
-    
+
     date_time: {
         type: DataTypes.DATE,
         allowNull: false,

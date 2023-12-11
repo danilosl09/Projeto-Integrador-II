@@ -6,7 +6,8 @@ const Tipo_Sensor = db.define('tipo_sensor', {
     id_tipo_sensor: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        allowNull: false
     },
     
     fabricante: {

@@ -6,7 +6,8 @@ const Tipo_de_Dado = db.define('tipo_de_dado', {
     id_tipo_de_dado: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        allowNull: false
     },
     
     tipo_de_dado: {
