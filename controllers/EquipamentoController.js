@@ -8,7 +8,7 @@ controller.getAll = async (req, res) => {
 
         })
         
-        res.status(200).render("equipamento/equipamentoIndex",{equipamento: equipamento})
+        res.status(200).render("equipamento/indexEquipamento",{equipamento: equipamento})
     } catch (error) {
         // console.log(error)
         res.status(500).render("pages/error",{error: "Erro ao carregar a página!"})

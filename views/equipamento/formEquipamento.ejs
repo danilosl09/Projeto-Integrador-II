@@ -1,0 +1,46 @@
+<%- include("../layouts/header", {title: 'Cadastro M.' }) %>
+
+  <%- include("../layouts/menu") %>
+
+    <div class="container_1">
+      <div>
+        <div>
+          <h1 >Cadastro de Motores</h1>
+        </div>
+        <div>
+          <div class="buttons is-pulled-right">
+            <a href="/motores" class="button is-small">Voltar</a>
+          </div>
+        </div>
+      </div>
+      <form action="/motoresNovo/:fabricante/:modelo/:potencia" method="POST">
+        <div class="field">
+          <label class="label">Fabricante</label>
+          <div class="control">
+            <input class="input" type="text" name="fabricante" placeholder="Informe o fabricante do motor" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Modelo</label>
+          <div class="control">
+            <input class="input" type="text" name="modelo" placeholder="Informe o modelo do Motor" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Potência</label>
+          <div class="control">
+            <input class="input" type="text" name="potencia" placeholder="Informe a potência do motor" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button type="submit" class="button is-success">Cadastrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <%- include("../layouts/footer") %>

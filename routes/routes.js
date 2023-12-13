@@ -5,9 +5,6 @@ const MotoresController = require('../controllers/MotoresController');
 const SensoresController = require('../controllers/SensoresController');    
 const SetorController = require('../controllers/SetorController');
 
-// const Chart = require("chart.js");
-// const EJS = require("ejs");
-
 const routes = express.Router();
 
 //Pagina inicial
@@ -21,8 +18,8 @@ routes.get('/', (req, res) => {
 
 //Requisição de dados
 routes.get('/dados', DadosController.getAll);
-
 routes.post('/filtraDados/:dataInicial/:horaInicial/:dataFinal/:horaFinal', DadosController.getById);
+
 //Controle Equipamentos
 routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.get('/equipamentos/:id', EquipamentoController.getById);
@@ -31,11 +28,12 @@ routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.delete('/equipamentos/:id', EquipamentoController.delete);
 
 //Controle Motores
-routes.get('/motores', MotoresController.getAll);
-//routes.get('/motores/:id', MotoresController.getById);
-//routes.post('/motores', MotoresController.create);
-//routes.put('/motores/:id', MotoresController.update);
-//routes.delete('/motores/:id', MotoresController.delete);
+routes.get('/motores', MotoresController.getAll); //Funcionou OK
+routes.get('/motores/:id', MotoresController.getById);
+routes.get('/motoresNovo', MotoresController.getRegisterPage); //Funcionou OK
+routes.post('/motoresNovo/:fabricante/:modelo/:potencia', MotoresController.create); //Funcionou OK
+routes.put('/motores/:modelo', MotoresController.update);
+routes.delete('/motores/:id_motores', MotoresController.delete); //Funcionou OK
 
 //Controle Sensores
 //routes.get('/sensores', SensoresController.getAll);

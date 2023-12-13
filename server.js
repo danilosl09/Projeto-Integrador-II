@@ -4,9 +4,6 @@ const path = require("path")
 require("./config/associations")
 const methodOverride = require('method-override');  
 
-
-
-
 const server = express()
 const port = 3000
 
@@ -19,9 +16,8 @@ server.use(routes)
 
 //avisando o express sobre um repositório estático no projeto
 server.use(express.static(path.join(__dirname,"public")))
-
+//avisando o express do local dos arquivos estáticos
 server.set("public", path.join(__dirname,"public"))
-
 //avisando o express do local das views
 server.set("views", path.join(__dirname,"views"))
 //setando a engine utilizada para visualização: EJS

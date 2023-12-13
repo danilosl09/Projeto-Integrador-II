@@ -304,7 +304,7 @@
     }
 }
 
-/* @midea (max-width: 880px){
+@midea (max-width: 880px){
     .cards{
         grid-template-columns: repeat(2, 1fr);
     }
@@ -350,4 +350,4 @@
     #dougth{
         padding: 0px;
     }
-} */
+}
