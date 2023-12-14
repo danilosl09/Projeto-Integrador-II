@@ -1,54 +1,48 @@
-<%- include("../layouts/header", {title: 'Início' }) %>
-
+<%- include("../layouts/header", {title: 'Editar' }) %>
   <%- include("../layouts/menu") %>
-
     <div class="container_1">
-      <h1>Lista de Motores</h1>
+      <h1>Editar informação do Motor</h1>
       <div class="coluna_1">
-
         <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
-        </div>
-        <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
-        </div>
-        <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
-        </div>
-        <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
+          <a href="/motores">Voltar</a>
         </div>
       </div>
       <div class="container_tabela">
-      <table>
-        <thead>
-          <tr class="item">
-            <th>ID</th>
-            <th>Fabricante</th>
-            <th>Modelo</th>
-            <th>Potencia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% motores.forEach(motor=> { %>
-            <tr class="item">
-              <td>
-                <%= motor.id_motores %>
-              </td>
-              <td>
-                <%= motor.fabricante_motor %>
-              </td>
-              <td>
-                <%= motor.modelo_motor %>
-              </td>
-              <td>
-                <%= motor.potencia_motor %>
-              </td>
-            </tr>
-            <% }) %>
-        </tbody>
-      </table>
+        <% if (motor.error) { %>
+          <p class="">
+            <%= motor.error %>
+          </p>
+          <% } %>
+            <form action="/motores/<%= motor.id_motores %>?_method=put" method="POST">
+              <table>
+                <thead>
+                  <tr class="item">
+                    <th>ID</th>
+                    <th>Fabricante</th>
+                    <th>Modelo</th>
+                    <th>Potencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="item">
+                    <td>
+                      <%= motor.id_motores %>
+                    </td>
+                    <td>
+                      <input class="input" type="text" name="fabricante" value="<%= motor.fabricante_motor%>" required>
+                    </td>
+                    <td>
+                      <input class="input" type="text" name="modelo" value="<%= motor.modelo_motor%>" required>
+                    </td>
+                    <td>
+                      <input class="input" type="text" name="potencia" value="<%= motor.potencia_motor%>" required>
+                    </td>
+                    <td>
+                      <button type="submit">Atualizar</button>
+                    </td>
+                </tbody>
+              </table>
+            </form>
+      </div>
     </div>
-    </div>
-
     <%- include("../layouts/footer") %>

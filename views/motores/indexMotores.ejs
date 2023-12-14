@@ -1,54 +1,50 @@
-<%- include("../layouts/header", {title: 'Início' }) %>
-
+<%- include("../layouts/header", {title: 'LISTA DE MOTORES' }) %>
   <%- include("../layouts/menu") %>
-
     <div class="container_1">
       <h1>Lista de Motores</h1>
       <div class="coluna_1">
-
         <div class="coluna_conteudo">
           <a href="/motoresNovo">Adicionar dados motor</a>
         </div>
         <div class="coluna_conteudo">
-          <a href="/">Editar dados do motor</a>
-        </div>
-        <div class="coluna_conteudo">
-          <a href="/">Buscar dados do motor</a>
+          <a href="/motoresSearch">Buscar dados do motor</a>
         </div>
       </div>
       <div class="container_tabela">
-      <table>
-        <thead>
-          <tr class="item">
-            <th>ID</th>
-            <th>Fabricante</th>
-            <th>Modelo</th>
-            <th>Potencia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% motores.forEach(motor=> { %>
+        <table>
+          <thead>
             <tr class="item">
-              <td>
-                <%= motor.id_motores %>
-              </td>
-              <td>
-                <%= motor.fabricante_motor %>
-              </td>
-              <td>
-                <%= motor.modelo_motor %>
-              </td>
-              <td>
-                <%= motor.potencia_motor %>
-              </td>
-              <td>
-              <a href="/motores/<%=motor.id_motores%>?_method=delete">Remover</a>
-              </td>
+              <th>ID</th>
+              <th>Fabricante</th>
+              <th>Modelo</th>
+              <th>Potencia</th>
             </tr>
-            <% }) %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% motores.forEach(motor=> { %>
+              <tr class="item">
+                <td>
+                  <%= motor.id_motores %>
+                </td>
+                <td>
+                  <%= motor.fabricante_motor %>
+                </td>
+                <td>
+                  <%= motor.modelo_motor %>
+                </td>
+                <td>
+                  <%= motor.potencia_motor %>
+                </td>
+                <td>
+                  <a href="/motores/<%=motor.id_motores%>?_method=delete">REMOVER</a>
+                </td>
+                <td>
+                  <a href="/motores/<%= motor.id_motores %>/update">EDITAR</a>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    </div>
-
     <%- include("../layouts/footer") %>

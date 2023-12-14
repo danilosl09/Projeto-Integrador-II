@@ -5,42 +5,43 @@
     <div class="container_1">
       <div>
         <div>
-          <h1 >Cadastro de Motores</h1>
+          <h1>Cadastro de Motores</h1>
         </div>
-        <div>
-          <div class="buttons is-pulled-right">
-            <a href="/motores" class="button is-small">Voltar</a>
+        <div class="coluna_1">
+          <div class="coluna_conteudo">
+            <a href="/motores">Voltar</a>
           </div>
         </div>
       </div>
-      <form action="/motoresNovo/:fabricante/:modelo/:potencia" method="POST">
-        <div class="field">
-          <label class="label">Fabricante</label>
-          <div class="control">
-            <input class="input" type="text" name="fabricante" placeholder="Informe o fabricante do motor" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Modelo</label>
-          <div class="control">
-            <input class="input" type="text" name="modelo" placeholder="Informe o modelo do Motor" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Potência</label>
-          <div class="control">
-            <input class="input" type="text" name="potencia" placeholder="Informe a potência do motor" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="control">
-            <button type="submit" class="button is-success">Cadastrar</button>
-          </div>
-        </div>
-      </form>
+      <div class="container_tabela">
+        <form action="/motoresNovo/:fabricante/:modelo/:potencia" method="POST">
+          <table>
+            <thead>
+              <tr class="item">
+                <th>Fabricante</th>
+                <th>Modelo</th>
+                <th>Potencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="item">
+                <td>
+                  <input class="input" type="text" name="fabricante" placeholder="Informe o fabricante do motor"
+                    required>
+                </td>
+                <td>
+                  <input class="input" type="text" name="modelo" placeholder="Informe o modelo do Motor" required>
+                </td>
+                <td>
+                  <input class="input" type="text" name="potencia" placeholder="Informe a potência do motor" required>
+                </td>
+                <td>
+                  <button type="submit" class="button is-success">Cadastrar</button>
+                </td>
+            </tbody>
+          </table>
+        </form>
+      </div>
     </div>
 
     <%- include("../layouts/footer") %>

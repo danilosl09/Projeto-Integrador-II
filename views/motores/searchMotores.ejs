@@ -1,0 +1,83 @@
+<%- include("../layouts/header", {title: 'BUSCA DE MOTORES' }) %>
+
+  <%- include("../layouts/menu") %>
+
+    <div class="container_1">
+      <h1>Busca de Motores</h1>
+      <div class="coluna_1">
+        <div class="coluna_conteudo">
+          <a href="/motoresNovo">Adicionar dados motor</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/">Editar dados do motor</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/">Buscar dados do motor</a>
+        </div>
+      </div>
+      <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
+      <form action="/motoresSearch/:fabricante/:modelo/:potencia" method="POST">
+        <div class="field">
+          <label class="label">Fabricante</label>
+          <div class="control">
+            <input class="input" type="text" name="fabricante" placeholder="Informe o fabricante do motor" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Modelo</label>
+          <div class="control">
+            <input class="input" type="text" name="modelo" placeholder="Informe o modelo do Motor">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Potência</label>
+          <div class="control">
+            <input class="input" type="text" name="potencia" placeholder="Informe a potência do motor">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button type="submit" class="button is-success">BUSCAR</button>
+          </div>
+        </div>
+      </form>
+      <!--////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
+      <div class="container_tabela">
+      <table>
+        <thead>
+          <tr class="item">
+            <th>ID</th>
+            <th>Fabricante</th>
+            <th>Modelo</th>
+            <th>Potencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% motores.forEach(motor=> { %>
+            <tr class="item">
+              <td>
+                <%= motor.id_motores %>
+              </td>
+              <td>
+                <%= motor.fabricante_motor %>
+              </td>
+              <td>
+                <%= motor.modelo_motor %>
+              </td>
+              <td>
+                <%= motor.potencia_motor %>
+              </td>
+              <td>
+              <a href="/motores/<%=motor.id_motores%>?_method=delete">Remover</a>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <%- include("../layouts/footer") %>

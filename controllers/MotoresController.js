@@ -8,14 +8,29 @@ const controller = {}
 
 controller.getRegisterPage = async (req, res) => {
     try {
-        res.status(200).render("motores/formMotores", {
-            pessoa: new Motores()
-        })
+        res.status(200).render("motores/formMotores", {motor: new Motores()})
     } catch (error) {
         res.status(500).render("pages/error", { error: "Erro ao carregar o formulário!" })
     }
 }
+//*********************************************** */
+controller.getUpdatePage = async (req, res) => {
+    const {id_motores} = req.params
+    try {
+        const motor = await Motores.findByPk(id_motores)
 
+        if (!motor) {
+            return res.status(422).render("pages/error",{error: "Motor não existe!"})
+        }
+        console.log(motor)
+        const motores = await Motores.findAll()
+
+        res.status(200).render("motores/editMotores",{motor: motor, motores: motores})
+    } catch (error) {
+        res.status(500).render("pages/error",{error: "Erro ao carregar o formulário!"})
+    }
+}
+//********************************************** */
 ///////////////////////////////////////////////////////////////////////////////////
 //Cria um novo motor
 controller.create = async (req, res) => {
@@ -33,10 +48,13 @@ controller.create = async (req, res) => {
         if (motor) {
             res.status(422).send("Motor já existente no registro existe")
         }      
+        
+        await Motores.create({fabricante_motor: fabricante, modelo_motor: modelo, potencia_motor: potencia})
+
+        
         const motores = await Motores.findAll({})
         console.log(jason(motores))
 
-        await Motores.create({fabricante_motor: fabricante, modelo_motor: modelo, potencia_motor: potencia})
         res.status(200).render("motores/indexMotores", {motores: motores})
 
     } catch (error) {
@@ -90,36 +108,30 @@ controller.getById = async (req, res) => {
 //////////////////////////////////////////////////////////////////////////////////
 //Edita as informações do motor
 controller.update = async (req, res) => {
-    const { pessoaId } = req.params
-    const { nome, rua, cidade } = req.body
+    const { id_motores } = req.params
+    const { fabricante, modelo, potencia } = req.body
 
     try {
-        const pessoa = await Pessoa.findByPk(pessoaId)
+        const motor = await Motores.findByPk(id_motores)
 
-        if (!pessoa) {
-            return res.status(422).render("pages/error", { error: "Usuário não existe!" })
+        if (!motor) {
+            return res.status(422).render("pages/error", { error: "Motor não existe!" })
         }
 
-        pessoa.nome = nome
-        await pessoa.save()
-
-        const endereco = await Endereco.findOne({
-            where: {
-                pessoaId: pessoaId
-            }
-        })
-
-        if (!endereco) {
-            return res.status(422).render("pages/error", { error: "Endereço não existe!" })
+        if (fabricante) {
+            motor.fabricante_motor = fabricante
         }
+        if (modelo) {
+            motor.modelo_motor = modelo
+        }
+        if (potencia) {
+            motor.potencia_motor = potencia
+        }
+        await motor.save()
 
-        endereco.rua = rua
-        endereco.cidade = cidade
-        await endereco.save()
-
-        res.status(200).redirect(`/pessoas/${pessoa.id}`)
+        res.status(200).redirect(`/motores`)
     } catch (error) {
-        return res.status(422).render("pages/error", { error: "Erro ao atualizar o usuário!" })
+        return res.status(422).render("pages/error", { error: "Erro ao atualizar os dados!" })
     }
 }
 

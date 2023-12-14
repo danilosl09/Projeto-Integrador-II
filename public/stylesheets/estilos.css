@@ -135,7 +135,7 @@
     width: 100%;
     padding: 20px 5px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
 }
 
@@ -312,13 +312,6 @@
     .charts{
         grid-template-columns: 1fr;
     }
-
-    #dougth-chart{
-        padding: 50px;
-    }
-    .dougth{
-        padding: 50px;
-    }
 }
 
 @midea (max-width: 500px){
@@ -327,27 +320,5 @@
     }
     .cards{
         grid-template-columns: 1fr;
-    }
-    .logo h2{
-        font-size: 20px;
-    }
-    .search{
-        width: 80%;
-    }
-    .search input{
-        padding: 0 20px;
-    }
-    .fa-bell{
-        margin-right: 5px;
-    }
-    .user{
-        width: 40px;
-        height: 40px;
-    }
-    #dougth-chart{
-        padding: 10px;
-    }
-    #dougth{
-        padding: 0px;
     }
 }

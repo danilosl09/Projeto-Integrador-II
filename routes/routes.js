@@ -28,11 +28,13 @@ routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.delete('/equipamentos/:id', EquipamentoController.delete);
 
 //Controle Motores
+routes.get("/motores/:id_motores/update",MotoresController.getUpdatePage)
+
 routes.get('/motores', MotoresController.getAll); //Funcionou OK
 routes.get('/motores/:id', MotoresController.getById);
 routes.get('/motoresNovo', MotoresController.getRegisterPage); //Funcionou OK
 routes.post('/motoresNovo/:fabricante/:modelo/:potencia', MotoresController.create); //Funcionou OK
-routes.put('/motores/:modelo', MotoresController.update);
+routes.put('/motores/:id_motores', MotoresController.update);
 routes.delete('/motores/:id_motores', MotoresController.delete); //Funcionou OK
 
 //Controle Sensores
