@@ -1,0 +1,43 @@
+<%- include("../layouts/header", {title: 'Cadastro Setor' }) %>
+
+  <%- include("../layouts/menu") %>
+
+    <div class="container_1">
+      <div>
+        <div>
+          <h1>Cadastro de Setores</h1>
+        </div>
+        <div class="coluna_1">
+          <div class="coluna_conteudo">
+            <a href="/setor">Voltar</a>
+          </div>
+        </div>
+      </div>
+      <div class="container_tabela">
+        <form action="/setorNovo/:nomeSetor/:linhaSetor" method="POST">
+          <table>
+            <thead>
+              <tr class="item">
+                <th>Nome setor</th>
+                <th>Nome linha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="item">
+                <td>
+                  <input class="input" type="text" name="nomeSetor" placeholder="Informe o nome do Setor"
+                    required>
+                </td>
+                <td>
+                  <input class="input" type="text" name="linhaSetor" placeholder="Informe o nome da Linha" required>
+                </td>
+                <td>
+                  <button type="submit" class="button is-success">Cadastrar</button>
+                </td>
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <%- include("../layouts/footer") %>

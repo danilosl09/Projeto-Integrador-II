@@ -5,7 +5,7 @@ const Motores = require("../models/motores");
 const controller = {}
 
 ///////////////////////////////////////////////////////////////////////////////////
-
+// ????????
 controller.getRegisterPage = async (req, res) => {
     try {
         res.status(200).render("motores/formMotores", {motor: new Motores()})
@@ -13,7 +13,8 @@ controller.getRegisterPage = async (req, res) => {
         res.status(500).render("pages/error", { error: "Erro ao carregar o formulário!" })
     }
 }
-//*********************************************** */
+///////////////////////////////////////////////////////////////////////////////////
+// ????????
 controller.getUpdatePage = async (req, res) => {
     const {id_motores} = req.params
     try {
@@ -30,7 +31,7 @@ controller.getUpdatePage = async (req, res) => {
         res.status(500).render("pages/error",{error: "Erro ao carregar o formulário!"})
     }
 }
-//********************************************** */
+
 ///////////////////////////////////////////////////////////////////////////////////
 //Cria um novo motor
 controller.create = async (req, res) => {

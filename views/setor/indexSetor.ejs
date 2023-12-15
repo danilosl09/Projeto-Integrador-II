@@ -1,49 +1,46 @@
-<%- include("../layouts/header", {title: 'Setor' }) %>
-
+<%- include("../layouts/header", {title: 'LISTA DE SETORES' }) %>
   <%- include("../layouts/menu") %>
-
-<div class="container_1">
-    <h1>Setor</h1>
-    <div class="coluna_1">
-      <div class="coluna_conteudo">
-        <a href="/">Voltar</a>
+    <div class="container_1">
+      <h1>Lista de Setores</h1>
+      <div class="coluna_1">
+        <div class="coluna_conteudo">
+          <a href="/setorNovo">Adicionar dados setor</a>
+        </div>
+        <div class="coluna_conteudo">
+          <a href="/setorSearch">Buscar dados do setor</a>
+        </div>
       </div>
-      <div class="coluna_conteudo">
-        <a href="/">Voltar</a>
-      </div>
-      <div class="coluna_conteudo">
-        <a href="/">Voltar</a>
-      </div>
-      <div class="coluna_conteudo">
-        <a href="/">Voltar</a>
-      </div>
-    </div>
-    <div class="container_tabela">
-      <table>
-        <thead>
-          <tr class="item">
-            <th>ID</th>
-            <th>Setor</th>
-            <th>Linha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% setor.forEach(setor=> { %>
+      <div class="container_tabela">
+        <table>
+          <thead>
             <tr class="item">
-              <td>
-                <%= setor.id_setor %>
-              </td>
-              <td>
-                <%= setor.nome_setor %>
-              </td>
-              <td>
-                <%= setor.linha_setor %>
-              </td>
+              <th>ID</th>
+              <th>Nome Setor</th>
+              <th>Nome Linha Setor</th>
             </tr>
-            <% }) %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% setor.forEach(setor=> { %>
+              <tr class="item">
+                <td>
+                  <%= setor.id_setor %>
+                </td>
+                <td>
+                  <%= setor.nome_setor %>
+                </td>
+                <td>
+                  <%= setor.nome_linha %>
+                </td>
+                <td>
+                  <a href="/setor/<%=setor.id_setor%>?_method=delete">REMOVER</a>
+                </td>
+                <td>
+                  <a href="/setor/<%= setor.id_setor %>/update">EDITAR</a>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-
-  <%- include("../layouts/footer") %>
+    <%- include("../layouts/footer") %>

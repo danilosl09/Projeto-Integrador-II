@@ -1,0 +1,45 @@
+<%- include("../layouts/header", {title: 'Editar Setor' }) %>
+  <%- include("../layouts/menu") %>
+    <div class="container_1">
+      <h1>Editar informação do Setor</h1>
+      <div class="coluna_1">
+        <div class="coluna_conteudo">
+          <a href="/setor">Voltar</a>
+        </div>
+      </div>
+      <div class="container_tabela">
+        <% if (setor.error) { %>
+          <p class="">
+            <%= setor.error %>
+          </p>
+          <% } %>
+            <form action="/setor/<%= setor.id_setor %>?_method=put" method="POST">
+              <table>
+                <thead>
+                  <tr class="item">
+                    <th>ID</th>
+                    <th>Fabricante</th>
+                    <th>Modelo</th>
+                    <th>Potencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="item">
+                    <td>
+                      <%= setor.id_setor %>
+                    </td>
+                    <td>
+                      <input class="input" type="text" name="nomeSetor" value="<%= motor.nome_setor%>" required>
+                    </td>
+                    <td>
+                      <input class="input" type="text" name="linhaSetor" value="<%= motor.linha_setor%>" required>
+                    </td>
+                    <td>
+                      <button type="submit">Atualizar</button>
+                    </td>
+                </tbody>
+              </table>
+            </form>
+      </div>
+    </div>
+    <%- include("../layouts/footer") %>
