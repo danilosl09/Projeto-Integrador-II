@@ -42,7 +42,7 @@ while True:
         connection = create_server_and_db_connection()
         cursor = connection.cursor()
         # Gerar número aleatório de 0 a 10
-        numero_aleatorio = str(random.randint(0, 15))
+        numero_aleatorio = str(random.randint(0, 1))
         print(numero_aleatorio)        
         #Gera a data e hora atual
         dataHora = None
@@ -50,7 +50,7 @@ while True:
         # dataHora = dataHora.strftime('%Y-%m-%d %H:%M:%S')
         print(dataHora)  
         # Inserir número aleatório no banco de dados na tabela dados item valorDado
-        execute_query(connection, "INSERT INTO dados (valorDado) VALUES ('"+numero_aleatorio+"')")
+        execute_query(connection, "INSERT INTO dados (valorDado, id_sensores, id_tipo_de_dado) VALUES ('"+numero_aleatorio+"', 3, 2)")
 
         # Inserir número aleatório no banco de dados na tabela dados item date_time e valorDado caso não esteja default a inserção de dados.
         # execute_query(connection, "INSERT INTO dados (date_time, valorDado) VALUES ('"+dataHora+"', '"+numero_aleatorio+"')")

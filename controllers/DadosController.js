@@ -46,21 +46,29 @@ controller.getAll = async (req, res) => {
 // --> seleciona os dados da tabela dados definidos pela dara e hora inicial e final
 controller.getById = async (req, res) => {
 
-    const { dataInicial, horaInicial, dataFinal, horaFinal } = req.body;
+    const { idSensores, dataInicial, horaInicial, dataFinal, horaFinal } = req.body;
+    const idSensor1 = parseInt(idSensores);
     const starQuery = dataInicial + " " + horaInicial;
     const endQuery = dataFinal + " " + horaFinal;
 
-    console.log("Os dados são " + starQuery + " e " + endQuery);
+    console.log(idSensor1)
+    console.log("Os dados são " + idSensores+ starQuery + " e " + endQuery);
 
     try {
-        const dados = await Dados.findAll({
-            attributes: ['date_time', 'valorDado'],
-            where: {
-                date_time: {
-                    [sequelize.Op.between]: [starQuery, endQuery]
+            const dados = await Dados.findAll({
+                attributes: ['date_time', 'valorDado'],
+                where: {
+
+                    [sequelize.Op.and]: [
+                        { id_sensores: idSensor1 },
+                        {
+                            date_time: {
+                                [sequelize.Op.between]: [starQuery, endQuery]
+                            }
+                        }
+                    ]
                 }
-            }
-        });
+            });
 
         const eixoX = [];
         const eixoY = [];
@@ -83,7 +91,7 @@ controller.getById = async (req, res) => {
 
         const chartData = JSON.stringify(data);
 
-        res.status(200).render("dados/indexDados", { chartData: chartData, dados: dados });
+        res.status(200).render("dados/showGraphDados", { chartData: chartData, dados: dados });
         console.log(chartData);
 
     } catch (error) {
