@@ -1,6 +1,7 @@
 const Setor = require("../models/setor");
 const jason = require("jason");
 const sequelize = require("sequelize");
+const Tipo_Sensor = require("../models/tipo_sensor");
 
 const controller = {}
 
@@ -48,29 +49,29 @@ controller.getUpdatePage = async (req, res) => {
 //Cria um novo setor
 controller.create = async (req, res) => {
 
-    const { nomeSetor, linhaSetor } = req.body
-    console.log(nomeSetor, linhaSetor + " aqui chega as informações da requisição")
+    const { fabricanteSensor, modeloSensor, tipoSensor } = req.body
+    console.log(fabricanteSensor, modeloSensor, tipoSensor + " aqui chega as informações da requisição")
 
     try {
-        const setor1 = await Setor.findOne({
+        const sensor = await Tipo_Sensor.findOne({
             where: {
 
-                linha_setor: linhaSetor
+                modelo_sensor: modeloSensor
             }
         });
 
-        console.log(setor1)
+        console.log(sensor)
 
-        if (setor1) {
-            res.status(422).send("linha já existente no registro")
+        if (sensor) {
+            res.status(422).send("modelo de sensor já existente no registro")
         } else {
-            await Setor.create({ nome_setor: nomeSetor, linha_setor: linhaSetor })
+            await Tipo_Sensor.create({ fabricante: fabricanteSensor, modelo_sensor: modeloSensor, tipo_sensor: tipoSensor  })
         };
 
-        const setor = await Setor.findAll({})
-        console.log(jason(setor))
+        const tipo_sensor = await Tipo_Sensor.findAll({})
+        console.log(jason(tipo_sensor))
 
-        res.status(200).render("setor/indexSetor", { setor: setor })
+        res.status(200).render("sensores/indexSensores", { tipo_sensor: tipo_sensor })
 
     } catch (error) {
         res.status(422).send('Ocorreu um erro ao cadastrar o motor' + error)

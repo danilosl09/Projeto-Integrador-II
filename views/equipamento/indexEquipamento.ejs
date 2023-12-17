@@ -1,18 +1,13 @@
-<%- include("../layouts/header", {title: 'EQUIPAMENTOS' }) %>
-
+<%- include("../layouts/header", {title: 'LISTA DE EQUIPAMENTOS' }) %>
   <%- include("../layouts/menu") %>
-
     <div class="container_1">
-      <h1>Equipamentos</h1>
+      <h1>Lista de equipamentoes</h1>
       <div class="coluna_1">
         <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
+          <a href="/equipamentoNovo">Adicionar dados equipamento</a>
         </div>
         <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
-        </div>
-        <div class="coluna_conteudo">
-          <a href="/">Voltar</a>
+          <a href="/equipamentoBusca">Buscar dados do equipamento</a>
         </div>
       </div>
       <div class="container_tabela">
@@ -20,7 +15,8 @@
           <thead>
             <tr class="item">
               <th>ID</th>
-              <th>Tag Equipamento</th>
+              <th>TAG equipamento</th>
+              <th>ID setor do Equipamento</th>
             </tr>
           </thead>
           <tbody>
@@ -32,10 +28,19 @@
                 <td>
                   <%= equipamento.tag_equipamento %>
                 </td>
+                <td>
+                  <%= equipamento.id_setor %>
+                </td>
+                <td>
+                  <a href="/equipamento/<%= equipamento.id_equipamento %>?_method=delete">REMOVER</a>
+                </td>
+                <td>
+                  <a href="/equipamento/<%= equipamento.id_equipamento %>/update">EDITAR</a>
+                </td>
               </tr>
               <% }) %>
           </tbody>
         </table>
       </div>
     </div>
-
+    <%- include("../layouts/footer") %>

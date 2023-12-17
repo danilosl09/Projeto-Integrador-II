@@ -29,16 +29,16 @@ controller.getSearchPage = async (req, res) => {
 controller.getUpdatePage = async (req, res) => {
     const { id_tipo_sensor } = req.params
 
-    console.log(id_tipo_sensor + " aqui chega o id do setor e verifica se existe")
+    console.log(id_tipo_sensor + " aqui chega o id do sensor e verifica se existe")
 
     try {
-        const tipo_sensor1 = await Tipo_Sensor.findByPk(id_setor)
+        const tipo_sensor = await Tipo_Sensor.findByPk(id_tipo_sensor)
 
-        if (!tipo_sensor1) {
-            return res.status(422).render("pages/error", { error: "Setor não existe!" })
+        if (!tipo_sensor) {
+            return res.status(422).render("pages/error", { error: "Sensor não existe!" })
         }
-        console.log(tipo_sensor1)
-        res.status(200).render("sensores/editSetor", { tipo_sensor1: tipo_sensor1 })
+        console.log(tipo_sensor)
+        res.status(200).render("sensores/editSensores", { tipo_sensor: tipo_sensor })
     } catch (error) {
         res.status(500).render("pages/error", { error: "Erro ao carregar o formulário!" })
     }
@@ -63,7 +63,7 @@ controller.create = async (req, res) => {
         if (tipo_sensor1) {
             res.status(422).send("linha já existente no registro")
         } else {
-            await Tipo_Sensor.create({fabricante: fabricante, modelo_sensor: modeloSensor, tipo_sensor: tipoSensor })
+            await Tipo_Sensor.create({ fabricante: fabricante, modelo_sensor: modeloSensor, tipo_sensor: tipoSensor })
         };
 
         const tipo_sensor = await Tipo_Sensor.findAll({})
@@ -83,7 +83,7 @@ controller.getAll = async (req, res) => {
 
         })
 
-        res.status(200).render("setor/indexSetor", { tipo_sensor: tipo_sensor })
+        res.status(200).render("sensores/indexSensores", { tipo_sensor: tipo_sensor })
     } catch (error) {
         res.status(500).render("pages/error", { error: "Erro ao carregar a página!" })
     }
@@ -91,48 +91,50 @@ controller.getAll = async (req, res) => {
 //////////////////////////////////////////////////////////////////////////////////
 //Busca todos iguais ao solicitado
 controller.search = async (req, res) => {
-    const { fabricante, modeloSensor, tipoSensor } = req.body
+    const { fabricanteSensor, modeloSensor, tipoSensor } = req.body
 
-        try {
+    console.log(fabricanteSensor + " aqui chega as informações da requisição")
 
-            const tipo_sensor = await Tipo_Sensor.findAll({
-                where: {
+    try {
 
-                    [sequelize.Op.or]: [
-                        { fabricante: fabricante },
-                        { modelo_sensor: modeloSensor },
-                        { tipo_sensor: tipoSensor } 
-                    ]
-                }
-            });
-            console.log(tipo_sensor.modelo_sensor)
+        const tipo_sensor = await Tipo_Sensor.findAll({
+            where: {
 
-            if (tipo_sensor.length === 0 || tipo_sensor[0].fabricante === '' || tipo_sensor[0].modelo_sensor === '' || tipo_sensor[0].tipo_sensor === '') {
-
-                    res.status(422).send("O item procurado não existe no banco de dados")                
-
+                [sequelize.Op.or]: [
+                    { fabricante: fabricanteSensor },
+                    { modelo_sensor: modeloSensor },
+                    { tipo_sensor: tipoSensor }
+                ]
             }
+        });
+        console.log(tipo_sensor.modelo_sensor)
 
-            if (!tipo_sensor) {
+        if (tipo_sensor.length === 0 || tipo_sensor[0].fabricanteSensor === '' || tipo_sensor[0].modelo_sensor === '' || tipo_sensor[0].tipo_sensor === '') {
 
-                res.status(422).send("O item procurado não existe no banco de dados")
+            res.status(422).send("O item procurado não existe no banco de dados")
 
-            } else {
+        }
 
-                busca = 1
-                res.status(200).render("sensores/searchSensores", { tipo_sensor: tipo_sensor })
+        if (!tipo_sensor) {
 
-            }
+            res.status(422).send("O item procurado não existe no banco de dados")
 
-        } catch (error) {
-            res.status(422).json('Ocorreu um erro ao buscar o item' + error)
+        } else {
+
+            busca = 1
+            res.status(200).render("sensores/searchSensores", { tipo_sensor: tipo_sensor })
+
+        }
+
+    } catch (error) {
+        res.status(422).json('Ocorreu um erro ao buscar o item ' + error)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////
 //Edita as informações do setor
 controller.update = async (req, res) => {
     const { id_tipo_sensor } = req.params
-    const {  fabricante, modeloSensor, tipoSensor } = req.body
+    const { fabricante, modeloSensor, tipoSensor } = req.body
 
     try {
         const tipo_sensor = await Tipo_Sensor.findByPk(id_tipo_sensor)
@@ -163,12 +165,13 @@ controller.update = async (req, res) => {
 controller.delete = async (req, res) => {
     const { id_tipo_sensor } = req.params
     console.log(id_tipo_sensor)
+
     try {
-        const tipo_sensor = await Setor.findByPk(id_setor)
+        const tipo_sensor = await Tipo_Sensor.findByPk(id_tipo_sensor)
         await tipo_sensor.destroy()
         res.status(200).redirect("/sensores")
     } catch (error) {
-        return res.status(422).render("pages/error", { error: "Erro ao remover setor!" })
+        return res.status(422).render("pages/error", { error: "Erro ao remover sensor!" })
     }
 }
 module.exports = controller

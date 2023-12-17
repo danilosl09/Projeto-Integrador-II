@@ -1,13 +1,13 @@
 <%- include("../layouts/header", {title: 'LISTA DE SETORES' }) %>
   <%- include("../layouts/menu") %>
     <div class="container_1">
-      <h1>Lista de Setores</h1>
+      <h1>Lista de Sensores</h1>
       <div class="coluna_1">
         <div class="coluna_conteudo">
-          <a href="/setorNovo">Adicionar dados setor</a>
+          <a href="/sensoresNovo">Adicionar dados sensor</a>
         </div>
         <div class="coluna_conteudo">
-          <a href="/setorBusca">Buscar dados do setor</a>
+          <a href="/sensoresBusca">Buscar dados do sensor</a>
         </div>
       </div>
       <div class="container_tabela">
@@ -15,27 +15,31 @@
           <thead>
             <tr class="item">
               <th>ID</th>
-              <th>Nome Setor</th>
-              <th>Nome Linha Setor</th>
+              <th>Fabricante</th>
+              <th>Modelo</th>
+              <th>Tipo</th>
             </tr>
           </thead>
           <tbody>
-            <% setor.forEach(setor=> { %>
+            <% tipo_sensor.forEach(tipo_sensor=> { %>
               <tr class="item">
                 <td>
-                  <%= setor.id_setor %>
+                  <%= tipo_sensor.id_tipo_sensor %>
                 </td>
                 <td>
-                  <%= setor.nome_setor %>
+                  <%= tipo_sensor.fabricante %>
                 </td>
                 <td>
-                  <%= setor.linha_setor %>
+                  <%= tipo_sensor.modelo_sensor %>
                 </td>
                 <td>
-                  <a href="/setor/<%= setor.id_setor %>?_method=delete">REMOVER</a>
+                  <%= tipo_sensor.tipo_sensor %>
                 </td>
                 <td>
-                  <a href="/setor/<%= setor.id_setor %>/update">EDITAR</a>
+                  <a href="/sensores/<%= tipo_sensor.id_tipo_sensor %>?_method=delete">REMOVER</a>
+                </td>
+                <td>
+                  <a href="/sensores/<%= tipo_sensor.id_tipo_sensor %>/update">EDITAR</a>
                 </td>
               </tr>
               <% }) %>

@@ -1,41 +1,43 @@
-<%- include("../layouts/header", {title: 'Editar Sensores' }) %>
+<%- include("../layouts/header", {title: 'Editar Equipamento' }) %>
   <%- include("../layouts/menu") %>
     <div class="container_1">
-      <h1>Editar informação dos Sensores</h1>
+      <h1>Editar informação do Equipamento</h1>
       <div class="coluna_1">
         <div class="coluna_conteudo">
-          <a href="/sensores">Voltar</a>
+          <a href="/equipamento">Voltar</a>
         </div>
       </div>
       <div class="container_tabela">
-        <% if (tipo_sensor.error) { %>
+        <% if (equipamento1.error) { %>
           <p class="">
-            <%= tipo_sensor.error %>
+            <%= equipamento1.error %>
           </p>
           <% } %>
-            <form action="/sensores/<%= tipo_sensor.id_tipo_sensor %>?_method=put" method="POST">
+            <form action="/equipamento/<%= equipamento1.id_equipamento %>?_method=put" method="POST">
               <table>
                 <thead>
                   <tr class="item">
                     <th>ID</th>
-                    <th>Tag do Sensor</th>
-                    <th>Nome Linha sensores</th>
+                    <th>Nome equipamento</th>
+                    <th>Nome Linha equipamento</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="item">
                     <td>
-                      <%= tipo_sensor.id_tipo_sensor %>
+                      <%= equipamento1.id_equipamento %>
                     </td>
+
                     <td>
-                      <input class="input" type="text" name="fabricanteSensor" value="<%= tipo_sensor.fabricante%>">
+                      <input class="input" type="text" name="tagEquipamento" value="<%= equipamento1.tag_equipamento%>"
+                        required>
                     </td>
+
                     <td>
-                      <input class="input" type="text" name="modeloSensor" value="<%= tipo_sensor.modelo_sensor%>">
+                      <input class="input" type="text" name="idSetorEquipamento" value="<%= equipamento1.id_setor%>"
+                        required>
                     </td>
-                    <td>
-                      <input class="input" type="text" name="tipoSensor" value="<%= tipo_sensor.tipo_sensor%>">
-                    </td>
+
                     <td>
                       <button type="submit">Atualizar</button>
                     </td>

@@ -1,64 +1,61 @@
-<%- include("../layouts/header", {title: 'BUSCA DE SENSORES' }) %>
+<%- include("../layouts/header", {title: 'BUSCA DE EQUIPAMENTOS' }) %>
   <%- include("../layouts/menu") %>
     <div class="container_1">
       <div>
         <div>
-          <h1>Busca Fabricante, Modelo ou Tipo</h1>
+          <h1>Busca equipamento ou Linha</h1>
         </div>
         <div class="coluna_1">
           <div class="coluna_conteudo">
-            <a href="/sensores">Voltar</a>
+            <a href="/equipamento">Voltar</a>
           </div>
         </div>
       </div>
       <div class="container_tabela">
         <% if (busca===1) { %>
-          <% tipo_sensor.forEach(tipo_sensor=> { %>
+          <% equipamento.forEach(equipamento=> { %>
             <table>
               <thead>
                 <tr class="item">
-                  <th>Fabricante</th>
-                  <th>Modelo</th>
-                  <th>Tipo</th>
+                  <th>ID</th>
+                  <th>TAG equipamento</th>
+                  <th>ID setor do Equipamento</th>
                 </tr>
               </thead>
               </thead>
               <tbody>
                 <tr class="item">
                   <td>
-                    <%= tipo_sensor.fabricante %>
+                    <%= equipamento.id_equipamento %>
                   </td>
                   <td>
-                    <%= tipo_sensor.modelo_sensor %>
+                    <%= equipamento.tag_equipamento %>
                   </td>
                   <td>
-                    <%= tipo_sensor.tipo_sensor %>
+                    <%= equipamento.id_setor %>
                   </td>
                 </tr>
               </tbody>
             </table>
             <% }) %>
               <% } else { %>
-                <form action="/sensoresSearch/:fabricanteSensor/:modeloSensor/:tipoSensor" method="POST">
+                <form action="/equipamentoSearch/:tagEquipamento/:idSetorEquipamento" method="POST">
                   <table>
                     <thead>
                       <tr class="item">
-                        <th>Fabricante</th>
-                        <th>Modelo</th>
-                        <th>Tipo</th>
+                        <th>TAG equipamento</th>
+                        <th>ID setor do Equipamento</th>
                       </tr>
                     </thead>
                     </thead>
                     <tbody>
                       <tr class="item">
                         <td>
-                          <input class="input" type="text" name="fabricanteSensor" value="<%= tipo_sensor.fabricante%>">
+                          <input class="input" type="text" name="tagEquipamento"
+                            value="<%= equipamento.tag_equipamento%>" required>
                         </td>
                         <td>
-                          <input class="input" type="text" name="modeloSensor" value="<%= tipo_sensor.modelo_sensor%>">
-                        </td>
-                        <td>
-                          <input class="input" type="text" name="tipoSensor" value="<%= tipo_sensor.tipo_sensor%>">
+                          <input class="input" type="text" name="idSetorEquipamento" value="<%= equipamento.id_setor%>">
                         </td>
                         <td>
                           <button type="submit">Buscar</button>

@@ -1,35 +1,41 @@
-<%- include("../layouts/header", {title: 'Cadastro Setor' }) %>
+<%- include("../layouts/header", {title: 'Cadastro Sensor' }) %>
 
   <%- include("../layouts/menu") %>
 
     <div class="container_1">
       <div>
         <div>
-          <h1>Cadastro de Setores</h1>
+          <h1>Cadastro de Sensores</h1>
         </div>
         <div class="coluna_1">
           <div class="coluna_conteudo">
-            <a href="/setor">Voltar</a>
+            <a href="/sensores">Voltar</a>
           </div>
         </div>
       </div>
       <div class="container_tabela">
-        <form action="/setorNovo/:nomeSetor/:linhaSetor" method="POST">
+        <form action="/sensoresNovo/:fabricanteSensor/:modeloSensor/:tipoSensor" method="POST">
           <table>
             <thead>
               <tr class="item">
-                <th>Nome setor</th>
-                <th>Nome linha</th>
+                <th>Fabricante</th>
+                <th>Modelo</th>
+                <th>Tipo</th>
               </tr>
             </thead>
             <tbody>
               <tr class="item">
                 <td>
-                  <input class="input" type="text" name="nomeSetor" placeholder="Informe o nome do Setor"
+                  <input class="input" type="text" name="fabricanteSensor"
+                    placeholder="Informe o nome do fabricando do sensor" required>
+                </td>
+                <td>
+                  <input class="input" type="text" name="modeloSensor" placeholder="Informe o modelo de fabricação "
                     required>
                 </td>
                 <td>
-                  <input class="input" type="text" name="linhaSetor" placeholder="Informe o nome da Linha" required>
+                  <input class="input" type="text" name="tipoSensor"
+                    placeholder="Informe o tipo de sensor (indutivo, capacitivo, etc)" required>
                 </td>
                 <td>
                   <button type="submit" class="button is-success">Cadastrar</button>
