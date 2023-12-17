@@ -7,7 +7,7 @@
           <a href="/motoresNovo">Adicionar dados motor</a>
         </div>
         <div class="coluna_conteudo">
-          <a href="/motoresSearch">Buscar dados do motor</a>
+          <a href="/motoresBusca">Buscar dados do motor</a>
         </div>
       </div>
       <div class="container_tabela">
@@ -36,7 +36,7 @@
                   <%= motor.potencia_motor %>
                 </td>
                 <td>
-                  <a href="/motores/<%=motor.id_motores%>?_method=delete">REMOVER</a>
+                  <a href="/motores/<%= motor.id_motores %>?_method=delete">REMOVER</a>
                 </td>
                 <td>
                   <a href="/motores/<%= motor.id_motores %>/update">EDITAR</a>

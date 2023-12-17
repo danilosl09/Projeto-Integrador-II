@@ -28,24 +28,33 @@ routes.get('/equipamentos', EquipamentoController.getAll);
 //routes.delete('/equipamentos/:id', EquipamentoController.delete);
 
 //Controle Motores
-routes.get("/motores/:id_motores/update",MotoresController.getUpdatePage)
-
+routes.get("/motores/:id_motores/update",MotoresController.getUpdatePage); //Funcionou OK
 routes.get('/motores', MotoresController.getAll); //Funcionou OK
-routes.get('/motores/:id', MotoresController.getById);
+routes.get('/motoresBusca', MotoresController.getSearchPage);
+routes.post('/motoresSearch/:fabricante/:modelo/:potencia', MotoresController.search);
 routes.get('/motoresNovo', MotoresController.getRegisterPage); //Funcionou OK
 routes.post('/motoresNovo/:fabricante/:modelo/:potencia', MotoresController.create); //Funcionou OK
 routes.put('/motores/:id_motores', MotoresController.update);
 routes.delete('/motores/:id_motores', MotoresController.delete); //Funcionou OK
 
 //Controle Sensores
-//routes.get('/sensores', SensoresController.getAll);
-//routes.get('/sensores/:id', SensoresController.getById);
+routes.get("/sensores/:id_setor/update",SetorController.getUpdatePage)
+routes.get('/sensores', SetorController.getAll);
+routes.get('/sensoresBusca/', SetorController.getSearchPage);
+routes.post('/sensoresSearch/:nomeSetor/:linhaSetor', SetorController.search);
+routes.get('/sensoresNovo', SetorController.getRegisterPage);
+routes.post('/sensoresNovo/:nomeSetor/:linhaSetor', SetorController.create); 
+routes.put('/sensores/:id_setor', SetorController.update);
+routes.delete('/sensores/:id_setor', SetorController.delete);
 
 //Controle Setor
+routes.get("/setor/:id_setor/update",SetorController.getUpdatePage)
 routes.get('/setor', SetorController.getAll);
-//routes.get('/setor/:id', SetorController.getById);
-//routes.post('/setor', SetorController.create);
-//routes.put('/setor/:id', SetorController.update);
-//routes.delete('/setor/:id', SetorController.delete);
+routes.get('/setorBusca/', SetorController.getSearchPage);
+routes.post('/setorSearch/:nomeSetor/:linhaSetor', SetorController.search);
+routes.get('/setorNovo', SetorController.getRegisterPage);
+routes.post('/setorNovo/:nomeSetor/:linhaSetor', SetorController.create); 
+routes.put('/setor/:id_setor', SetorController.update);
+routes.delete('/setor/:id_setor', SetorController.delete);
 
 module.exports = routes;

@@ -1,11 +1,11 @@
 const jason = require("jason");
 const Motores = require("../models/motores");
-
+const sequelize = require("sequelize");
 
 const controller = {}
 
 ///////////////////////////////////////////////////////////////////////////////////
-// ????????
+//Auxiliar para página de registro
 controller.getRegisterPage = async (req, res) => {
     try {
         res.status(200).render("motores/formMotores", {motor: new Motores()})
@@ -14,7 +14,17 @@ controller.getRegisterPage = async (req, res) => {
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////
-// ????????
+//Auxiliar para página de busca
+controller.getSearchPage = async (req, res) => {
+    const busca = 0
+    try {
+        res.status(200).render("motores/searchMotores", { motores: new Motores(), busca: busca })
+    } catch (error) {
+        res.status(500).render("pages/error", { error: "Erro ao carregar o formulário!" })
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////
+//Auxiliar para página de edição
 controller.getUpdatePage = async (req, res) => {
     const {id_motores} = req.params
     try {
@@ -31,13 +41,11 @@ controller.getUpdatePage = async (req, res) => {
         res.status(500).render("pages/error",{error: "Erro ao carregar o formulário!"})
     }
 }
-
 ///////////////////////////////////////////////////////////////////////////////////
 //Cria um novo motor
 controller.create = async (req, res) => {
 
     const { fabricante, modelo, potencia } = req.body
-    console.log(fabricante, modelo, potencia)
 
     try {
         const motor = await Motores.findOne({
@@ -62,7 +70,6 @@ controller.create = async (req, res) => {
         res.status(422).send('Ocorreu um erro ao cadastrar o motor' + error)
     }
 }
-
 //////////////////////////////////////////////////////////////////////////////////
 //Busca todos os motores da lista
 controller.getAll = async (req, res) => {
@@ -76,33 +83,43 @@ controller.getAll = async (req, res) => {
         res.status(500).render("pages/error", { error: "Erro ao carregar a página!" })
     }
 }
-
 //////////////////////////////////////////////////////////////////////////////////
 //Busca todos iguais ao solicitado
-controller.getById = async (req, res) => {
+controller.search = async (req, res) => {
+    const { fabricante, modelo, potencia } = req.body
 
-    const { modelo } = req.params
+        try {
 
-    try {    
+            const motores = await Motores.findAll({
+                where: {
 
-    const motor = await Motores.findOne({
-        where: {
-            modelo_motor: modelo
-        }
-    });
+                    [sequelize.Op.or]: [
+                        { fabricante_motor: fabricante },
+                        { modelo_motor: modelo },
+                        { potencia_motor: potencia}
+                    ]
+                }
+            });
 
-    if (!motor) {
-        res.status(422).send("Motor não existe no banco de dados")
-    }
+            if (motores.length === 0 || motores[0].fabricante_motor === '' || motores[0].modelo_motor === '' || motores[0].potencia_motor === '') {
 
-    const motores = await Motores.findAll({
-        where: {
-            modelo_motor: modelo
-        }
-    })      
-        return res.status(200).json(motores)
-    } catch (error) {
-        res.status(422).json('Ocorreu um erro ao buscar o item' + error)
+                    res.status(422).send("O item procurado não existe no banco de dados")                
+
+            }
+
+            if (!motores) {
+
+                res.status(422).send("O item procurado não existe no banco de dados")
+
+            } else {
+
+                busca = 1
+                res.status(200).render("motores/searchMotores", { motores: motores })
+
+            }
+
+        } catch (error) {
+            res.status(422).json('Ocorreu um erro ao buscar o item' + error)
     }
 }
 

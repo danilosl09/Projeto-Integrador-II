@@ -1,39 +1,39 @@
-<%- include("../layouts/header", {title: 'Editar Setor' }) %>
+<%- include("../layouts/header", {title: 'Editar Sensores' }) %>
   <%- include("../layouts/menu") %>
     <div class="container_1">
-      <h1>Editar informação do Setor</h1>
+      <h1>Editar informação dos Sensores</h1>
       <div class="coluna_1">
         <div class="coluna_conteudo">
-          <a href="/setor">Voltar</a>
+          <a href="/sensores">Voltar</a>
         </div>
       </div>
       <div class="container_tabela">
-        <% if (setor1.error) { %>
+        <% if (sensores1.error) { %>
           <p class="">
-            <%= setor1.error %>
+            <%= sensores1.error %>
           </p>
           <% } %>
-            <form action="/setor/<%= setor1.id_setor %>?_method=put" method="POST">
+            <form action="/sensores/<%= sensores1.id_sensores %>?_method=put" method="POST">
               <table>
                 <thead>
                   <tr class="item">
                     <th>ID</th>
-                    <th>Nome Setor</th>
-                    <th>Nome Linha Setor</th>
+                    <th>Tag do Sensor</th>
+                    <th>Nome Linha sensores</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="item">
                     <td>
-                      <%= setor1.id_setor %>
+                      <%= sensores1.id_sensores %>
                     </td>
 
                     <td>
-                      <input class="input" type="text" name="nomeSetor" value="<%= setor1.nome_setor%>" required>
+                      <input class="input" type="text" name="nomesensores" value="<%= sensores1.nome_sensores%>" required>
                     </td>
 
                     <td>
-                      <input class="input" type="text" name="linhaSetor" value="<%= setor1.linha_setor%>" required>
+                      <input class="input" type="text" name="linhasensores" value="<%= sensores1.linha_sensores%>" required>
                     </td>
 
                     <td>

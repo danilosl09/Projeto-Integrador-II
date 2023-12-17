@@ -1,44 +1,39 @@
-<%- include("../layouts/header", {title: 'Cadastro M.' }) %>
+<%- include("../layouts/header", {title: 'Cadastro Setor' }) %>
 
   <%- include("../layouts/menu") %>
 
     <div class="container_1">
       <div>
         <div>
-          <h1>Cadastro de Motores</h1>
+          <h1>Cadastro de Setores</h1>
         </div>
         <div class="coluna_1">
           <div class="coluna_conteudo">
-            <a href="/motores">Voltar</a>
+            <a href="/setor">Voltar</a>
           </div>
         </div>
       </div>
       <div class="container_tabela">
-        <form action="/motoresNovo/:fabricante/:modelo/:potencia" method="POST">
+        <form action="/setorNovo/:nomeSetor/:linhaSetor" method="POST">
           <table>
             <thead>
               <tr class="item">
-                <th>Fabricante</th>
-                <th>Modelo</th>
-                <th>Potencia</th>
+                <th>Nome setor</th>
+                <th>Nome linha</th>
               </tr>
             </thead>
             <tbody>
               <tr class="item">
                 <td>
-                  <input class="input" type="text" name="fabricante" placeholder="Informe o fabricante do motor"
+                  <input class="input" type="text" name="nomeSetor" placeholder="Informe o nome do Setor"
                     required>
                 </td>
                 <td>
-                  <input class="input" type="text" name="modelo" placeholder="Informe o modelo do Motor" required>
-                </td>
-                <td>
-                  <input class="input" type="text" name="potencia" placeholder="Informe a potência do motor" required>
+                  <input class="input" type="text" name="linhaSetor" placeholder="Informe o nome da Linha" required>
                 </td>
                 <td>
                   <button type="submit" class="button is-success">Cadastrar</button>
                 </td>
-              </tr>
             </tbody>
           </table>
         </form>
