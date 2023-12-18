@@ -6,7 +6,7 @@ const SensoresController = require('../controllers/SensoresController');
 const SetorController = require('../controllers/SetorController');
 
 const routes = express.Router();
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Pagina inicial
 routes.get('/', (req, res) => {
     try {
@@ -15,7 +15,16 @@ routes.get('/', (req, res) => {
         res.status(500).render('pages/error', { error: "Erro ao carregar a página!" })
     }
 });
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Pagina tela
+routes.get('/tela', (req, res) => {
+    try {
+        res.status(200).render('pages/tela');
+    } catch (error) {
+        res.status(500).render('pages/error', { error: "Erro ao carregar a página!" })
+    }
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Requisição de dados
 routes.get('/indexDados', (req, res) => {
     try {
