@@ -69,6 +69,8 @@ controller.getById = async (req, res) => {
                     ]
                 }
             });
+        
+        console.log(dados[0].valorDado);
 
         const eixoX = [];
         const eixoY = [];
